@@ -1,0 +1,14 @@
+# Usa Python 3.11 como base
+FROM python:3.11-slim
+
+# Establece el directorio de trabajo en /app
+WORKDIR /app
+
+# Copia el notebook pi.ipynb al contenedor
+COPY pi.ipynb /app/
+
+# Instala ipython y cualquier otro paquete necesario
+RUN pip install --no-cache-dir ipython
+
+# Comando por defecto: ejecutar el notebook con el argumento 10**5
+CMD ["ipython", "/app/pi.ipynb", "10**5"]
